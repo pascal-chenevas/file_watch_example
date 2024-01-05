@@ -2,6 +2,7 @@ defmodule FileWatchExample.Product do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @timestamps_opts [type: :utc_datetime_usec]
   schema "products" do
     field :name, :string
     field :bar_code, :string

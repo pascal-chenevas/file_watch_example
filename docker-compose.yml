@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: store
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/my.cnf:/etc/my.cnf
+
+  elixir_app:
+    build: .
+    depends_on:
+      - db
+    command: mix run --no-halt
+    environment:
+      - MIX_ENV=prod
+    volumes:
+      - .:/app
+      - /tmp:/tmp
+
+volumes:
+  db_data: {}

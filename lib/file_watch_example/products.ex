@@ -4,10 +4,10 @@ defmodule FileWatchExample.Product do
 
   @timestamps_opts [type: :utc_datetime_usec]
   schema "products" do
-    field :name, :string
-    field :bar_code, :string
-    field :price, :string
-    field :currency, :string
+    field(:name, :string)
+    field(:bar_code, :string)
+    field(:price, :string)
+    field(:currency, :string)
 
     timestamps()
   end
